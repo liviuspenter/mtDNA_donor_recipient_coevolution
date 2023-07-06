@@ -5,7 +5,7 @@ in the scripts.
 
 ## mtDNA-based deconvolution (mtscATAC-seq) 
 To perform the mixing titration, first download the raw data (CLL4_1 and CLL5_1) from NCBI Geo (GSE163579) and process with cellranger-atac
-as CLL_relapse1_1 and CLL_relapse3_1. Next, create an ArchR object (```00_create_ArchR.R```)
+as CLL_relapse1_1 and CLL_relapse3_1. Next, create an ArchR object ([```00_create_archr.R```](R/00_create_archr.R))
 
 To generate the mixing steps, I first generated a list of cell barcodes from each sample for each titration step 
 ([```01_create_barcode_lists_atac.R```](R/01_create_barcode_lists_atac.R)).
