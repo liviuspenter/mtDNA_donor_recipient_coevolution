@@ -46,5 +46,8 @@ I was unable to make this work despite contacting Haynes Heaton directly.
 
 ### vireo without germline reference
 Run [cellsnp-lite](https://github.com/single-cell-genetics/cellsnp-lite) ([```04_start_cellsnp.sh```](SNP/04_start_cellsnp.sh)) 
-followed by vireo ([```03_start_souporcell.sh```](SNP/03_start_souporcell.sh)).
+followed by vireo ([```06_start_vireo_no_reference.sh```](SNP/06_start_vireo_no_reference.sh)).
 
+### vireo with germline reference
+Generate germline reference ([```cellsnp-lite.sh```](SNP/cellsnp-lite.sh)), then run 
+vireo ([```05_start_vireo.sh```](SNP/05_start_vireo.sh)).
