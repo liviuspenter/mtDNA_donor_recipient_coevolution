@@ -1,10 +1,10 @@
-# Generation of in-silico mixing experiment data with CLL4 and CLL5
+# Generation of in-silico mixing experiment data with CLL4 and CLL6
 
-For historical reasons during the data analyses, the sample CLL4 is called CLL_relapse1_1 while the sample from CLL5 is called CLL_relapse3_1
-in the scripts. 
+For historical reasons during the data analyses, the sample CLL4 is called CLL_relapse1_1 (mtDNA) or Pool91-1_22 (scRNA-seq),
+while the sample from CLL6 is called CLL_relapse3_1 (mtDNA) or Pool91-1_24 (scRNA-seq) in the scripts. 
 
 ## mtDNA-based deconvolution (mtscATAC-seq) 
-To perform the mixing titration, first download the raw data (CLL4_1 and CLL5_1) from NCBI Geo (GSE163579) and process with cellranger-atac
+To perform the mixing titration, first download the raw data (CLL4_1 and CLL6_1) from NCBI Geo (GSE163579) and process with cellranger-atac
 as CLL_relapse1_1 and CLL_relapse3_1. Next, create an ArchR object ([```00_create_archr.R```](R/00_create_archr.R))
 
 To generate the mixing steps, I first generated a list of cell barcodes from each sample for each titration step 
@@ -18,3 +18,7 @@ and indexed the bam file.
 
 Finally, I ran [mgatk](https://github.com/caleblareau/mgatk) on the merged bam files to perform discovery of 
 mitochondrial DNA mutations ([```03_start_mgatk.sh```](mtDNA/03_start_mgatk.sh)).
+
+## SNP-based deconvolution (scRNA-seq)
+To perform the mixing titration, first download the raw data (CLL4_1 and CLL6_1) from NCBI Geo (GSE165087) and process with cellranger
+as Pool91-1_22 and Pool91-1_24 for CLL4 and CLL6, respectively. 
