@@ -1,16 +1,20 @@
 setwd('/Users/shaka87/dfci/asap_seq/')
 
+# create ArchR object of CLL4 (CLL_relapse1_1) and CLL5 (CLL_relapse3_1) 
+# for extraction of cell barcodes for generation of synthetic bam files
+
 library(ArchR)
 library(ggplot2)
 library(parallel)
 library(Seurat)
 library(Signac)
 
-# create ArchR object
+# create ArchR object and put into ArchRProjects storage
 setwd('/Users/shaka87/ArchRProjects/CLL_relapse/')
 
 addArchRGenome('hg38')
 
+# path needs to be changed
 input.files = createArrowFiles(inputFiles = c('/Users/shaka87/dfci/mito_atac/data/20200730/CLL_relapse1_1/fragments.tsv.gz',
                                               '/Users/shaka87/dfci/mito_atac/data/20200730/CLL_relapse3_1/fragments.tsv.gz'),
                                sampleNames = c('CLL_relapse1_1','CLL_relapse3_1'),
