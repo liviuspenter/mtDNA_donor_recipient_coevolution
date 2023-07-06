@@ -1,9 +1,9 @@
-# Generation of in-silico mixing experiment data with CLL4 and CLL6
+# Generation and processing of in-silico mixing experiment data with CLL4 and CLL6
 
 For historical reasons during the data analyses, the sample CLL4 is called CLL_relapse1_1 (mtDNA) or Pool91-1_22 (scRNA-seq),
 while the sample from CLL6 is called CLL_relapse3_1 (mtDNA) or Pool91-1_24 (scRNA-seq) in the scripts. 
 
-The mixing itself was performed using shell scripts on the HMS O2 cluster. 
+The mixing itself and variant calling were performed using shell scripts on the HMS O2 cluster.
 
 ## mtDNA-based deconvolution (mtscATAC-seq) 
 To perform the mixing titration, first download the raw data (CLL4_1 and CLL6_1) from NCBI Geo (GSE163579) and process with cellranger-atac
@@ -39,6 +39,12 @@ Finally, I ran [souporcell](https://github.com/wheaton5/souporcell) and [vireo](
 for deconvolution with and without a germline reference. 
 
 ### souporcell without germline reference
+Run souporcell ([```03_start_souporcell.sh```](SNP/03_start_souporcell.sh)).
 
 ### souporcell with germline reference
-I was unable to make this work despite contacting 
+I was unable to make this work despite contacting Haynes Heaton directly. 
+
+### vireo without germline reference
+Run [cellsnp-lite](https://github.com/single-cell-genetics/cellsnp-lite) ([```04_start_cellsnp.sh```](SNP/04_start_cellsnp.sh)) 
+followed by vireo ([```03_start_souporcell.sh```](SNP/03_start_souporcell.sh)).
+
