@@ -1,5 +1,8 @@
 setwd('/Users/shaka87/dfci/asap_seq/')
 
+# generate barcodes for each mixing step for each sample
+# cell barcodes that overlap between samples are excluded
+
 library(ArchR)
 library(dplyr)
 library(ggplot2)
@@ -23,6 +26,7 @@ file2 = file2 %>% filter(!V1 %in% file1$V1)
 file1 = file1 %>% filter(paste0('CLL_relapse1_1#',V1) %in% rownames(CLL.mix))
 file2 = file2 %>% filter(paste0('CLL_relapse3_1#',V1) %in% rownames(CLL.mix))
 
+# write barcodes
 for (downsample in c(1,5,10,50,100,500,1000)) {
   file1.downsample = file1[sample(nrow(file1), downsample),]
   file2.downsample = file2#[sample(nrow(file2), 8000),]
