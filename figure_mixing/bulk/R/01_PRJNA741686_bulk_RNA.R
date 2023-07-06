@@ -1,9 +1,7 @@
-setwd('/Users/shaka87/dfci/asap_seq/')
-
 library(dplyr)
 library(ggplot2)
 
-source('./analysis/bulk_mtDNA/00_variant_calling_atac.R')
+source('./figure_mixing/bulk/R/00_variant_calling_atac.R')
 
 GenePos.tib <- tibble(Names = c("ATP6", "ATP8", "COX1", "COX2", "COX3", "CYTB", "ND1", "ND2", "ND3",
                                 "ND4", "ND4L", "ND5", "ND6", "RNR1", "RNR2"),
@@ -12,9 +10,9 @@ GenePos.tib <- tibble(Names = c("ATP6", "ATP8", "COX1", "COX2", "COX3", "CYTB", 
 
 ### plot coverage
 coverage.df = data.frame()
-for (library in list.files('./data/bulk/PRJNA741686/', pattern = '*.mgatk')) {
+for (library in list.files('./data/mixing/bulk/PRJNA741686/', pattern = '*.mgatk')) {
   message(library)
-  coverage = data.table::fread(paste0('./data/bulk/PRJNA741686/',library, '/final/mgatk.coverage.txt.gz'))
+  coverage = data.table::fread(paste0('./data/mixing/bulk/PRJNA741686/',library, '/final/mgatk.coverage.txt.gz'))
   colnames(coverage) = c('pos','sample', 'coverage')
   coverage.df = rbind(coverage.df, coverage)
 }
@@ -42,13 +40,13 @@ ggplot(coverage, aes(x=pos, y=coverage.mean/1000)) +
   theme(legend.position = 'none',
         axis.title = element_text('Arial', size=10, color='black'),
         axis.text = element_text('Arial', size=10, color='black'))
-ggsave('./figures/bulk/20230319_mtDNA_coverage_bulk_RNA.svg', width = 3, height = 2.5)
+ggsave('./figure_mixing/bulk/figures/20230319_mtDNA_coverage_bulk_RNA.svg', width = 3, height = 2.5)
 
 ### read variants
 results.df = data.frame()
-for (library in list.files('./data/bulk/PRJNA741686/', pattern = '*.mgatk')) {
+for (library in list.files('./data/mixing/bulk/PRJNA741686/', pattern = '*.mgatk')) {
   message(library)
-  results = variant_calling_bulk(sample.bulk = readRDS(paste0('./data/bulk/PRJNA741686/',library, '/final/mgatk.rds')), 
+  results = variant_calling_bulk(sample.bulk = readRDS(paste0('./data/mixing/bulk/PRJNA741686/',library, '/final/mgatk.rds')), 
                                  coverage.position = 20, strand.coordination = 0, total.coverage = 30,
                                  sample.name = s)
   results = results[which(!is.na(results$heteroplasmy)),]
@@ -66,8 +64,8 @@ results.df.filtered = results.df %>% filter(heteroplasmy > 0.98)
 
 ### variants per patient
 results.df.filtered$dataset = 'PRJNA741686'
-write.csv(results.df.filtered, file = './data/bulk/PRJNA741686.csv', quote = F, row.names = F)
-results.df.filtered = read.csv(file = './data/bulk/PRJNA741686.csv')
+write.csv(results.df.filtered, file = './data/mixing/bulk/PRJNA741686.csv', quote = F, row.names = F)
+results.df.filtered = read.csv(file = './data/mixing/bulk/PRJNA741686.csv')
 
 ### visualize frequency across chrM
 df = as.data.frame(table(results.df.filtered$variant))
@@ -100,7 +98,7 @@ ggplot(boo, aes(x=pos, y=n)) + geom_col(aes(fill=gene)) +
   theme(legend.position = 'none',
         axis.title = element_text('Arial', size=10, color='black'),
         axis.text = element_text('Arial', size=10, color='black'))
-ggsave('./figures/bulk/20230319_mtDNA_variants_bulk_RNA.svg', width = 3, height = 2.5)
+ggsave('./figure_mixing/bulk/figures/20230319_mtDNA_variants_bulk_RNA.svg', width = 3, height = 2.5)
 
 ### calculate number of variants for each pair
 
@@ -122,7 +120,7 @@ ggplot(df, aes(x=n)) + geom_histogram(binwidth = 1, fill='lightblue') +
   theme(legend.position = 'none',
         axis.title = element_text('Arial', size=10, color='black'),
         axis.text = element_text('Arial', size=10, color='black'))
-ggsave('./figures/bulk/20230319_absolute_mtDNA_variants_bulk_RNA.svg', width = 2, height = 2)
+ggsave('./figure_mixing/bulk/figures/20230319_absolute_mtDNA_variants_bulk_RNA.svg', width = 2, height = 2)
 
 df = data.frame()
 informative_variants_all = c()
@@ -149,7 +147,7 @@ ggplot(df, aes(x=variants)) + geom_histogram(binwidth = 1, fill='lightblue') +
   theme(legend.position = 'none',
         axis.title = element_text('Arial', size=10, color='black'),
         axis.text = element_text('Arial', size=10, color='black'))
-ggsave('./figures/bulk/20230319_informative_mtDNA_variants_bulk_RNA.svg', width = 2, height = 2)
+ggsave('./figure_mixing/bulk/figures/20230319_informative_mtDNA_variants_bulk_RNA.svg', width = 2, height = 2)
 
 # median 21
 median(df$variants)
@@ -178,4 +176,4 @@ ggplot(data=boo, aes(x=pos, y=n)) + geom_col(aes(fill=gene)) +
   theme(legend.position = 'none',
         axis.title = element_text('Arial', size=8, color='black'),
         axis.text = element_text('Arial', size=8, color='black'))
-ggsave('./figures/bulk/20230319_informative_mtDNA_variants_distribution_bulk_RNA.svg', width = 3, height = 2)
+ggsave('./figure_mixing/bulk/figures/20230319_informative_mtDNA_variants_distribution_bulk_RNA.svg', width = 3, height = 2)

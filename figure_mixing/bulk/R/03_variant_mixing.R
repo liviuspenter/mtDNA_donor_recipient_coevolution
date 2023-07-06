@@ -1,8 +1,6 @@
-setwd('/Users/shaka87/dfci/asap_seq/')
-
 # downsample experiment
-results.df.filtered.RNA = read.csv(file = './data/bulk/PRJNA741686.csv')
-results.df.filtered.DNA = read.csv(file = './data/bulk/PRJNA486215_PRJNA563929.csv')
+results.df.filtered.RNA = read.csv(file = './data/mixing/bulk/PRJNA741686.csv')
+results.df.filtered.DNA = read.csv(file = './data/mixing/bulk/PRJNA486215_PRJNA563929.csv')
 results.df.filtered = rbind(results.df.filtered.DNA, results.df.filtered.RNA)
 
 # simulate data across all 3 datasets
@@ -36,4 +34,4 @@ ggplot(df, aes(x=variants, fill=dataset)) + geom_histogram(binwidth=1) +
   theme(legend.position = 'none',
         axis.title = element_text('Arial', size=10, color='black'),
         axis.text = element_text('Arial', size=10, color='black'))
-ggsave('./figures/bulk/20230327_informative_variants_all.svg', width = 2, height = 2)
+ggsave('./figure_mixing/bulk/figures/20230327_informative_variants_all.svg', width = 2, height = 2)
