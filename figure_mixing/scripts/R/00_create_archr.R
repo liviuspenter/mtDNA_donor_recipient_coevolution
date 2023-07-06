@@ -1,6 +1,6 @@
 setwd('/Users/shaka87/dfci/asap_seq/')
 
-# create ArchR object of CLL4 (CLL_relapse1_1) and CLL5 (CLL_relapse3_1) 
+# create ArchR object of CLL4 (CLL_relapse1_1) and CLL6 (CLL_relapse3_1) 
 # for extraction of cell barcodes for generation of synthetic bam files
 
 library(ArchR)
