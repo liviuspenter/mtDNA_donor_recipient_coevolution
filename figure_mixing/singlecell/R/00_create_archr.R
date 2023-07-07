@@ -1,6 +1,4 @@
-setwd('/Users/shaka87/dfci/asap_seq/')
-
-# create ArchR object of CLL4 (CLL_relapse1_1) and CLL6 (CLL_relapse3_1) 
+# create ArchR object of CLL4 (CLL_relapse1_1) and CLL5 (CLL_relapse3_1) 
 # for extraction of cell barcodes for generation of synthetic bam files
 
 library(ArchR)
@@ -10,18 +8,16 @@ library(Seurat)
 library(Signac)
 
 # create ArchR object and put into ArchRProjects storage
-setwd('/Users/shaka87/ArchRProjects/CLL_relapse/')
 
 addArchRGenome('hg38')
 
-# path needs to be changed
-input.files = createArrowFiles(inputFiles = c('/Users/shaka87/dfci/mito_atac/data/20200730/CLL_relapse1_1/fragments.tsv.gz',
-                                              '/Users/shaka87/dfci/mito_atac/data/20200730/CLL_relapse3_1/fragments.tsv.gz'),
+input.files = createArrowFiles(inputFiles = c('./data/mixing/singlecell/CLL_relapse1_1/fragments.tsv.gz',
+                                              './data/mixing/singlecell/CLL_relapse3_1/fragments.tsv.gz'),
                                sampleNames = c('CLL_relapse1_1','CLL_relapse3_1'),
                                minTSS = 4, minFrags = 1000, addTileMat = T, addGeneScoreMat = T)
 doubScores <- addDoubletScores(input = input.files, k = 10, knnMethod = "UMAP", LSIMethod = 1, threads = 1)
 
-CLL.mix = ArchRProject(ArrowFiles = input.files, outputDirectory = './CLL.mix', copyArrows = F)
+CLL.mix = ArchRProject(ArrowFiles = input.files, outputDirectory = './data/mixing/singlecell/CLL.mix', copyArrows = F)
 CLL.mix = filterDoublets(CLL.mix)
 
 CLL.mix = addIterativeLSI(ArchRProj = CLL.mix, useMatrix = 'TileMatrix', name = 'IterativeLSI', 
