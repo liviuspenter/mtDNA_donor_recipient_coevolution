@@ -3,15 +3,13 @@ library(gplots)
 library(Seurat)
 library(ComplexHeatmap)
 
-MART1.mito = loadArchRProject('/Users/shaka87/ArchRProjects/MART1/MART1.mito/')
-
-setwd('/Users/liviuspenter/dfci/asap_seq/')
+MART1.mito = loadArchRProject('./data/mixing/MART1/MART1.mito/')
 
 row.order = c('Tcrb','CD3', 'CD4', 'CD8', 'CD62L', 'CCR7', 'CD45RO', 'CD45RA', 'CD127','CD25', 'CD28', 'CD57', 'PD1','CD39','CD38','CD56',
               'CD14', 'CD16','CD33', 'CD11c', 'CD117', 'CD19', 'CD138')
 
 # subset TSB data to cells in MART1.mito object and rerun UMAP + clustering
-TSB.so = readRDS('./data/objects/20211031_MART1_TSB.so.rds')
+TSB.so = readRDS('./data/mixing/MART1/objects/20211031_MART1_TSB.so.rds')
 TSB.so = TSB.so[,which(colnames(TSB.so) %in% MART1.mito$cellNames)]
 TSB.so = RunUMAP(TSB.so, dims = 1:20)
 TSB.so = FindNeighbors(TSB.so)
@@ -33,7 +31,7 @@ TSB.so$manual.cluster[which(TSB.so$seurat_clusters %in% c('8'))] = 'B cell'
 TSB.so$manual.cluster[which(TSB.so$seurat_clusters %in% c('9'))] = 'Mono'
 TSB.so$manual.cluster[which(TSB.so$seurat_clusters %in% c('10'))] = 'CD4.activated'
 TSB.so$manual.cluster[which(TSB.so$seurat_clusters %in% c('11'))] = 'NK'
-saveRDS(TSB.so, file = './data/objects/20211031_MART1_TSB_mito.so.rds')
+saveRDS(TSB.so, file = './data/mixing/MART1/objects/20211031_MART1_TSB_mito.so.rds')
 
 # add donor status to TSB object
 boo = data.frame(cellName = MART1.mito$cellNames, 
@@ -41,7 +39,8 @@ boo = data.frame(cellName = MART1.mito$cellNames,
 rownames(boo) = boo$cellName
 boo = boo[colnames(TSB.so),]
 TSB.so$donor = boo$donor
-saveRDS(TSB.so, file = './data/objects/20211031_MART1_TSB_mito.so.rds')
+saveRDS(TSB.so, file = './data/mixing/MART1/objects/20211031_MART1_TSB_mito.so.rds')
+TSB.so = readRDS(file = './data/mixing/MART1/objects/20211031_MART1_TSB_mito.so.rds')
 
 df = as.data.frame(t(GetAssayData(TSB.so)[c('CD3', 'CD38','CD127'),]))
 df$donor = TSB.so$donor
@@ -72,7 +71,7 @@ ha = columnAnnotation(Donor = boo$donor,
                       #manual.cluster = TSB.so$manual.cluster[which(TSB.so$donor %in% c('5', '108'))], 
                       col = list(Donor = c('5' = 'blue', '108' = 'orange')), border = T)
 col_fun = circlize::colorRamp2(breaks = seq(-2,2,4/8), colors = BuenColors::jdb_palette(name='brewer_yes', n=9))
-svglite::svglite('./figures/heatmaps/20211031_MART1_donor_recipient.svg', width = 6, height = 4)
+svglite::svglite('./figure_mixing/MART1/figures/20211031_MART1_donor_recipient.svg', width = 6, height = 4)
 Heatmap(df[row.order,], top_annotation = ha, use_raster = T, raster_quality = 10, 
         cluster_rows = F, cluster_columns = F, show_column_names = F, col = col_fun, 
         column_title_rot = 90, column_title_side = 'bottom', column_title_gp = gpar(fontsize=10), 
