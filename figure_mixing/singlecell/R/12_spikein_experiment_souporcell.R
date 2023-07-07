@@ -4,14 +4,14 @@ library(ArchR)
 library(ggplot2)
 library(Seurat)
 
-CLL.mix.so = readRDS('./data/artifical_mixing/CLL_mix_so.rds')
+CLL.mix.so = readRDS('./data/mixing/singlecell/CLL_mix_so.rds')
 
 # read out mixing experiment
 df = data.frame()
 for (exp in c(1,5,10,50,100,500,1000)) {
   message(exp)
   
-  boo = data.table::fread(paste0('./data/artifical_mixing/souporcell/mixing_', exp, '/clusters.tsv'))
+  boo = data.table::fread(paste0('./data/mixing/singlecell/souporcell/mixing_', exp, '/clusters.tsv'))
   boo$spikein = exp
   df = rbind(df, boo)
 }
@@ -26,7 +26,7 @@ ggplot(df %>% group_by(spikein) %>%
   theme(legend.position = 'none',
         axis.text = element_text('Arial', size=10, color='black'),
         axis.title = element_text('Arial', size=10, color='black'))
-ggsave('./figures/artificial_mixing/20230322_souporcell_doublet_rate.svg', width = 1.5, height = 1.5)
+ggsave('./figure_mixing/singlecell/figures/20230322_souporcell_doublet_rate.svg', width = 1.5, height = 1.5)
 
 # unassigned rate
 ggplot(df %>% group_by(spikein) %>% 
@@ -38,7 +38,7 @@ ggplot(df %>% group_by(spikein) %>%
   theme(legend.position = 'none',
         axis.text = element_text('Arial', size=10, color='black'),
         axis.title = element_text('Arial', size=10, color='black'))
-ggsave('./figures/artificial_mixing/20230322_souporcell_unassignment_rate.svg', width = 1.5, height = 1.5)
+ggsave('./figure_mixing/singlecell/figures/20230322_souporcell_unassignment_rate.svg', width = 1.5, height = 1.5)
 
 # ratio
 ggplot(df %>% group_by(spikein) %>% 
@@ -53,12 +53,12 @@ ggplot(df %>% group_by(spikein) %>%
   theme(legend.position = 'none',
         axis.text = element_text('Arial', size=10, color='black'),
         axis.title = element_text('Arial', size=10, color='black'))
-ggsave('./figures/artificial_mixing/20230322_souporcell_cluster_ratio.svg', width = 1.5, height = 1.5)
+ggsave('./figure_mixing/singlecell/figures/20230322_souporcell_cluster_ratio.svg', width = 1.5, height = 1.5)
 
 statistics = data.frame()
 for (exp in c(1,5,10,50,100,500,1000)) {
-  barcodes1 = data.table::fread(paste0('./data/artifical_mixing/barcodes_scRNAseq/CLL_relapse1_1_barcodes.',exp), header = F)$V1
-  barcodes3 = data.table::fread(paste0('./data/artifical_mixing/barcodes_scRNAseq/CLL_relapse3_1_barcodes.',exp), header = F)$V1
+  barcodes1 = data.table::fread(paste0('./data/mixing/singlecell/barcodes_scRNAseq/CLL_relapse1_1_barcodes.',exp), header = F)$V1
+  barcodes3 = data.table::fread(paste0('./data/mixing/singlecell/barcodes_scRNAseq/CLL_relapse3_1_barcodes.',exp), header = F)$V1
   
   boo = df %>% filter(spikein == exp & status == 'singlet')
   statistics = rbind(statistics, 
@@ -94,4 +94,4 @@ ggplot() +
   theme(legend.position = 'none',
         axis.text = element_text('Arial', size=10, color='black'),
         axis.title = element_text('Arial', size=10, color='black'))
-ggsave('./figures/artificial_mixing/20230322_souporcell_cluster_distribution.svg', width = 1.5, height = 1.5)
+ggsave('./figure_mixing/singlecell/figures/20230322_souporcell_cluster_distribution.svg', width = 1.5, height = 1.5)

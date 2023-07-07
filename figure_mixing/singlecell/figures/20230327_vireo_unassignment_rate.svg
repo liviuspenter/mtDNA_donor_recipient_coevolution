@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='108.00pt' height='108.00pt' viewBox='0 0 108.00 108.00'>
+<defs>
+  <style type='text/css'><![CDATA[
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  ]]></style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
+<defs>
+  <clipPath id='cpMC4wMHwxMDguMDB8MC4wMHwxMDguMDA='>
+    <rect x='0.00' y='0.00' width='108.00' height='108.00' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMC4wMHwxMDguMDB8MC4wMHwxMDguMDA=)'>
+<rect x='0.00' y='0.00' width='108.00' height='108.00' style='stroke-width: 1.07; stroke: #FFFFFF; fill: #FFFFFF;' />
+</g>
+<defs>
+  <clipPath id='cpMzkuMTF8MTAyLjUyfDUuNDh8NzYuMzI='>
+    <rect x='39.11' y='5.48' width='63.41' height='70.84' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMzkuMTF8MTAyLjUyfDUuNDh8NzYuMzI=)'>
+<rect x='39.11' y='5.48' width='63.41' height='70.84' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+<circle cx='42.00' cy='8.70' r='0.89' style='stroke-width: 0.71; fill: #000000;' />
+<circle cx='55.43' cy='18.30' r='0.89' style='stroke-width: 0.71; fill: #000000;' />
+<circle cx='61.21' cy='13.28' r='0.89' style='stroke-width: 0.71; fill: #000000;' />
+<circle cx='74.64' cy='20.49' r='0.89' style='stroke-width: 0.71; fill: #000000;' />
+<circle cx='80.42' cy='22.02' r='0.89' style='stroke-width: 0.71; fill: #000000;' />
+<circle cx='93.85' cy='44.72' r='0.89' style='stroke-width: 0.71; fill: #000000;' />
+<circle cx='99.64' cy='73.10' r='0.89' style='stroke-width: 0.71; fill: #000000;' />
+</g>
+<g clip-path='url(#cpMC4wMHwxMDguMDB8MC4wMHwxMDguMDA=)'>
+<polyline points='39.11,76.32 39.11,5.48 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<text x='34.18' y='77.55' text-anchor='end' style='font-size: 10.00px; font-family: "Arial";' textLength='5.57px' lengthAdjust='spacingAndGlyphs'>0</text>
+<text x='34.18' y='55.72' text-anchor='end' style='font-size: 10.00px; font-family: "Arial";' textLength='16.70px' lengthAdjust='spacingAndGlyphs'>100</text>
+<text x='34.18' y='33.89' text-anchor='end' style='font-size: 10.00px; font-family: "Arial";' textLength='16.70px' lengthAdjust='spacingAndGlyphs'>200</text>
+<text x='34.18' y='12.06' text-anchor='end' style='font-size: 10.00px; font-family: "Arial";' textLength='16.70px' lengthAdjust='spacingAndGlyphs'>300</text>
+<polyline points='36.37,73.97 39.11,73.97 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='36.37,52.14 39.11,52.14 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='36.37,30.31 39.11,30.31 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='36.37,8.48 39.11,8.48 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='39.11,76.32 102.52,76.32 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='42.00,79.06 42.00,76.32 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='61.21,79.06 61.21,76.32 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='80.42,79.06 80.42,76.32 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='99.64,79.06 99.64,76.32 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<text x='42.00' y='88.41' text-anchor='middle' style='font-size: 10.00px; font-family: "Arial";' textLength='5.57px' lengthAdjust='spacingAndGlyphs'>1</text>
+<text x='61.21' y='88.41' text-anchor='middle' style='font-size: 10.00px; font-family: "Arial";' textLength='11.13px' lengthAdjust='spacingAndGlyphs'>10</text>
+<text x='80.42' y='88.41' text-anchor='middle' style='font-size: 10.00px; font-family: "Arial";' textLength='16.70px' lengthAdjust='spacingAndGlyphs'>100</text>
+<text x='99.64' y='88.41' text-anchor='middle' style='font-size: 10.00px; font-family: "Arial";' textLength='22.26px' lengthAdjust='spacingAndGlyphs'>1000</text>
+<text x='70.82' y='100.42' text-anchor='middle' style='font-size: 10.00px; font-family: "Arial";' textLength='66.20px' lengthAdjust='spacingAndGlyphs'>CLL1 spiked in</text>
+<text transform='translate(12.64,40.90) rotate(-90)' text-anchor='middle' style='font-size: 10.00px; font-family: "Arial";' textLength='73.99px' lengthAdjust='spacingAndGlyphs'>unassigned cells</text>
+</g>
+</svg>
