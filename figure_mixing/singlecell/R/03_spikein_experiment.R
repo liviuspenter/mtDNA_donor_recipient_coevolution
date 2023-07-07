@@ -1,5 +1,3 @@
-setwd('/Users/shaka87/dfci/asap_seq/')
-
 library(ArchR)
 library(dplyr)
 library(ggplot2)
@@ -7,16 +5,16 @@ library(parallel)
 library(Seurat)
 library(Signac)
 
-CLL.mix = loadArchRProject('/Users/shaka87/ArchRProjects/CLL_relapse/CLL.mix/')
+CLL.mix = loadArchRProject('./data/mixing/singlecell/CLL.mix/')
 
-informative.variants = as.data.frame(read.csv2(file = './data/artifical_mixing/informative_variants.csv', sep = '\t'))
+informative.variants = as.data.frame(read.csv2(file = './data/mixing/singlecell/informative_variants.csv', sep = '\t'))
 
 # read out mixing experiment
 df = data.frame()
 for (exp in c(1,5,10,50,100,500,1000)) {
   message(exp)
   # load mgatk output
-  mito.data <- ReadMGATK(dir = paste0('./data/artifical_mixing/mtscATAC-seq/mixing_',exp,'.mgatk/'))
+  mito.data <- ReadMGATK(dir = paste0('./data/mixing/singlecell/mtscATAC-seq/mixing_',exp,'.mgatk/'))
   
   # read out informative mtDNA mutations
   VAFs = AlleleFreq(mito.data$counts, variants = informative.variants$variant, assay= NULL)
@@ -26,14 +24,14 @@ for (exp in c(1,5,10,50,100,500,1000)) {
                             VAFs.3 = colMeans(VAFs[informative.variants$variant[which(informative.variants$individual == 'CLL3')],]),
                             spike.in = exp))
 }
-write.table(df, quote = F, sep = '\t', row.names = F, file = './data/artifical_mixing/mtscATAC-seq/results.csv')
-df = read.table(file = './data/artifical_mixing/mtscATAC-seq/results.csv', header = T)
+write.table(df, quote = F, sep = '\t', row.names = F, file = './data/mixing/singlecell/mtscATAC-seq/results.csv')
+df = read.table(file = './data/mixing/singlecell/mtscATAC-seq/results.csv', header = T)
 
 # read ground-truth data
 df$sample.orig = 'none'
 for (exp in c(1,5,10,50,100,500,1000)) {
-  barcodes.1 = as.data.frame(data.table::fread(file = paste0('./data/artifical_mixing/barcodes_mtscATACseq/CLL_relapse1_1_barcodes.', exp), header = F))
-  barcodes.3 = as.data.frame(data.table::fread(file = paste0('./data/artifical_mixing/barcodes_mtscATACseq/CLL_relapse3_1_barcodes.', exp), header = F))
+  barcodes.1 = as.data.frame(data.table::fread(file = paste0('./data/mixing/singlecell/barcodes_mtscATACseq/CLL_relapse1_1_barcodes.', exp), header = F))
+  barcodes.3 = as.data.frame(data.table::fread(file = paste0('./data/mixing/singlecell/barcodes_mtscATACseq/CLL_relapse3_1_barcodes.', exp), header = F))
   df[which(df$spike.in == exp & df$bc %in% barcodes.1$V1), 'sample.orig'] = 'CLL1'
   df[which(df$spike.in == exp & df$bc %in% barcodes.3$V1), 'sample.orig'] = 'CLL3'
 }
@@ -70,7 +68,7 @@ ggplot() +
   theme(legend.position = 'none',
         axis.text = element_text('Arial', size=10, color='black'),
         axis.title = element_text('Arial', size=10, color='black'))
-ggsave('./figures/artificial_mixing/20230322_spikein_mtscATAC.svg', width = 1.5, height = 1.5)
+ggsave('./figure_mixing/singlecell/figures/20230322_spikein_mtscATAC.svg', width = 1.5, height = 1.5)
 
 ggplot(results, aes(x=spike.in, y=none.1)) + 
   geom_abline(slope = 1) + 
@@ -81,5 +79,5 @@ ggplot(results, aes(x=spike.in, y=none.1)) +
   theme(legend.position = 'none',
         axis.text = element_text('Arial', size=10, color='black'),
         axis.title = element_text('Arial', size=10, color='black'))
-ggsave('./figures/artificial_mixing/20230322_spikein_mtscATAC_unannotated.svg', width = 1.5, height = 1.5)
+ggsave('./figure_mixing/singlecell/figures/20230322_spikein_mtscATAC_unannotated.svg', width = 1.5, height = 1.5)
 
