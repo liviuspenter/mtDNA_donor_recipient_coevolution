@@ -1,4 +1,4 @@
-setwd('/Users/shaka87/dfci/mission_bio/')
+# create heatmap of CLL5 (called CLL3)
 
 library(ComplexHeatmap)
 library(dplyr)
@@ -11,10 +11,10 @@ library(Signac)
 col_fun = circlize::colorRamp2(breaks = c(-1,seq(0,100,100/8)), colors = c('grey', BuenColors::jdb_palette(name = 'solar_rojos')))
 
 # call mtDNA mutations using mgatk 
-CLL2.mito = ReadMGATK('./data/CLL2.hg38.mgatk/')
+CLL2.mito = ReadMGATK('./data/coevolution/CLL2.hg38.mgatk/')
 colnames(CLL2.mito$counts) = gsub(paste0('CLL2#', colnames(CLL2.mito$counts)), pattern = '-1', replacement = '')
 rownames(CLL2.mito$depth) = gsub(paste0('CLL2#', rownames(CLL2.mito$depth)), pattern = '-1', replacement = '')
-CLL3.mito = ReadMGATK('./data/CLL3.mgatk/')
+CLL3.mito = ReadMGATK('./data/coevolution/CLL3.mgatk/')
 colnames(CLL3.mito$counts) = gsub(paste0('CLL3#', colnames(CLL3.mito$counts)), pattern = '-1', replacement = '')
 rownames(CLL3.mito$depth) = gsub(paste0('CLL3#', rownames(CLL3.mito$depth)), pattern = '-1', replacement = '')
 CLL.mito = CLL2.mito
@@ -32,24 +32,22 @@ CLL.mgatk <- AlleleFreq(object = CLL.mgatk, variants = c('2332C>T', '5979G>A', '
                         assay = "mito")
 CLL.mito.vaf = as.data.frame(t(as.data.frame(GetAssayData(CLL.mgatk[["alleles"]]))))
 
-so.12 = readRDS('./data/objects/20220504_CLL34_filtered.rds')
+so.12 = readRDS('./data/coevolution/objects/20220504_CLL34_filtered.rds')
 
-vafs.1 = as.data.frame(data.table::fread('./data/CLL2.whitelist/AF.csv'))
+vafs.1 = as.data.frame(data.table::fread('./data/coevolution/CLL2.whitelist/AF.csv'))
 vafs.1$Barcode = gsub(paste0('CLL2#',vafs.1$Barcode), pattern = '-1', replacement = '')
 rownames(vafs.1) = vafs.1$Barcode
 vafs.1 = vafs.1[,-c(1,2)]
-
-vafs.2 = as.data.frame(data.table::fread('./data/CLL3.whitelist/AF.csv'))
+vafs.2 = as.data.frame(data.table::fread('./data/coevolution/CLL3.whitelist/AF.csv'))
 vafs.2$Barcode = gsub(paste0('CLL3#',vafs.2$Barcode), pattern = '-1', replacement = '')
 rownames(vafs.2) = vafs.2$Barcode
 vafs.2 = vafs.2[,-c(1,2)]
 
-depth.1 = as.data.frame(data.table::fread('./data/CLL2.whitelist/DP.csv'))
+depth.1 = as.data.frame(data.table::fread('./data/coevolution/CLL2.whitelist/DP.csv'))
 depth.1$Barcode = gsub(paste0('CLL2#',depth.1$Barcode), pattern = '-1', replacement = '')
 rownames(depth.1) = depth.1$Barcode
 depth.1 = depth.1[,-c(1,2)]
-
-depth.2 = as.data.frame(data.table::fread('./data/CLL3.whitelist/DP.csv'))
+depth.2 = as.data.frame(data.table::fread('./data/coevolution/CLL3.whitelist/DP.csv'))
 depth.2$Barcode = gsub(paste0('CLL3#',depth.2$Barcode), pattern = '-1', replacement = '')
 rownames(depth.2) = depth.2$Barcode
 depth.2 = depth.2[,-c(1,2)]
@@ -57,8 +55,8 @@ depth.2 = depth.2[,-c(1,2)]
 vafs = dplyr::bind_rows(vafs.1, vafs.2)
 depth = dplyr::bind_rows(depth.1, depth.2)
 
-annotation2 = read.csv2('./data/CLL2/20220506_deconvolution.csv', row.names = 1)
-annotation3 = read.csv2('./data/CLL3/20220506_deconvolution.csv', row.names = 1)
+annotation2 = read.csv2('./data/coevolution/CLL2/20220506_deconvolution.csv', row.names = 1)
+annotation3 = read.csv2('./data/coevolution/CLL3/20220506_deconvolution.csv', row.names = 1)
 
 annotation2$bc = gsub(annotation2$bc, pattern = '-1', replacement = '')
 annotation3$bc = gsub(annotation3$bc, pattern = '-1', replacement = '')
@@ -97,7 +95,7 @@ ha = columnAnnotation(cluster = so.12$manual.cluster[c(cells.1, cells.recipient.
                                                'Cluster 6' = 'black')), 
                       simple_anno_size = unit(5, 'pt'), border = T)
 
-svglite::svglite('./figures/heatmaps/20230427_CLL3_raw.svg', width = 15, height = 15)
+svglite::svglite('./figure_coevolution/CLL/figures/CLL5/heatmaps/20230427_CLL5_raw.svg', width = 15, height = 15)
 Heatmap(t(vafs[c(cells.1, cells.recipient.2, cells.donor.2),relevant.mutations]), show_row_names = T, show_column_names = F, 
         show_row_dend = F, show_column_dend = F, row_names_side = 'left', cluster_columns = F, cluster_rows = F,
         row_names_gp = gpar(fontsize=8),
@@ -110,7 +108,7 @@ dev.off()
 
 
 ### make curated heatmap with custom ordering
-source('/Users/shaka87/dfci/scripts/20200328_mtscatac_seq.R')
+source('./R/20200328_mtscatac_seq.R')
 
 vafs = dplyr::bind_rows(vafs.1, vafs.2)
 depth = dplyr::bind_rows(depth.1, depth.2)
@@ -166,7 +164,7 @@ ha = columnAnnotation(cluster = so.12$manual.cluster[c(cells.1.CLL, cells.1.immu
                                                'Cluster 6' = 'black')), 
                       simple_anno_size = unit(5, 'pt'), border = T)
 
-svglite::svglite('./figures/heatmaps/20230427_CLL3_curated.svg', width = 7, height = 2.5)
+svglite::svglite('./figure_coevolution/CLL/figures/CLL5/heatmaps/20230427_CLL5_curated.svg', width = 7, height = 2.5)
 Heatmap(t(vafs[c(cells.1.CLL, cells.1.immune, cells.2.recipient, cells.2.donor),
                c(CLL.auto, CLL.mito)]), 
         show_row_names = T, show_column_names = F, 
@@ -197,7 +195,7 @@ ggplot() +
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
-ggsave('./figures/CLL3/plots/20230427_CLL3_pre_FCR_MME_KCKN13.svg', width = 1.1, height = 1.1)
+ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_pre_FCR_MME_KCKN13.svg', width = 1.1, height = 1.1)
 
 ggplot() + 
   geom_point(data=vafs[cells.2.recipient,], aes(x=`MME:chr3:154866416:G/T`, y=`KCNK13:chr14:90650709:G/A`), color='firebrick', size=0.5) + 
@@ -206,7 +204,7 @@ ggplot() +
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
-ggsave('./figures/CLL3/plots/20230427_CLL3_post_HSCT_MME_KCKN13.svg', width = 1.1, height = 1.1)
+ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_post_HSCT_MME_KCKN13.svg', width = 1.1, height = 1.1)
 
 
 ggplot() + 
@@ -216,7 +214,7 @@ ggplot() +
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
-ggsave('./figures/CLL3/plots/20230427_CLL3_pre_FCR_2332C>T_5979G>A.svg', width = 1.1, height = 1.1)
+ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_pre_FCR_2332C>T_5979G>A.svg', width = 1.1, height = 1.1)
 
 ggplot() + 
   geom_point(data=vafs[cells.2.recipient,], aes(x=`2332C>T`/10, y=`5979G>A`/10), color='firebrick', size=0.5) + 
@@ -225,7 +223,7 @@ ggplot() +
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
-ggsave('./figures/CLL3/plots/20230427_CLL3_post_HSCT_2332C>T_5979G>A.svg', width = 1.1, height = 1.1)
+ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_post_HSCT_2332C>T_5979G>A.svg', width = 1.1, height = 1.1)
 
 
 
@@ -236,7 +234,7 @@ ggplot() +
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
-ggsave('./figures/CLL3/plots/20230427_CLL3_pre_FCR_MME_5979G>A.svg', width = 1.1, height = 1.1)
+ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_pre_FCR_MME_5979G>A.svg', width = 1.1, height = 1.1)
 
 ggplot() + 
   geom_point(data=vafs[cells.2.recipient,], aes(x=`MME:chr3:154866416:G/T`, y=`5979G>A`/10), color='firebrick', size=0.5) + 
@@ -245,7 +243,7 @@ ggplot() +
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
-ggsave('./figures/CLL3/plots/20230427_CLL3_post_HSCT_MME_5979G>A.svg', width = 1.1, height = 1.1)
+ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_post_HSCT_MME_5979G>A.svg', width = 1.1, height = 1.1)
 
 
 ggplot() + 
@@ -255,7 +253,7 @@ ggplot() +
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
-ggsave('./figures/CLL3/plots/20230427_CLL3_pre_FCR_MME_2332C>T.svg', width = 1.1, height = 1.1)
+ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_pre_FCR_MME_2332C>T.svg', width = 1.1, height = 1.1)
 
 ggplot() + 
   geom_point(data=vafs[cells.2.recipient,], aes(x=`MME:chr3:154866416:G/T`, y=`2332C>T`/10), color='firebrick', size=0.5) + 
@@ -264,7 +262,7 @@ ggplot() +
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
-ggsave('./figures/CLL3/plots/20230427_CLL3_post_HSCT_MME_2332C>T.svg', width = 1.1, height = 1.1)
+ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_post_HSCT_MME_2332C>T.svg', width = 1.1, height = 1.1)
 
 
 
@@ -275,7 +273,7 @@ ggplot() +
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
-ggsave('./figures/CLL3/plots/20230427_CLL3_pre_FCR_ASL_2332C>T.svg', width = 1.1, height = 1.1)
+ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_pre_FCR_ASL_2332C>T.svg', width = 1.1, height = 1.1)
 
 ggplot() + 
   geom_point(data=vafs[cells.2.recipient,], aes(x=`ASL:chr7:65554306:A/G`, y=`2332C>T`/10), color='firebrick', size=0.5) + 
@@ -284,7 +282,7 @@ ggplot() +
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
-ggsave('./figures/CLL3/plots/20230427_CLL3_post_HSCT_ASL_2332C>T.svg', width = 1.1, height = 1.1)
+ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_post_HSCT_ASL_2332C>T.svg', width = 1.1, height = 1.1)
 
 ggplot() + 
   geom_point(data=vafs[cells.1.CLL,], aes(x=`ASL:chr7:65554306:A/G`, y=`5979G>A`/10), color='blue', size=0.5) + 
@@ -293,7 +291,7 @@ ggplot() +
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
-ggsave('./figures/CLL3/plots/20230427_CLL3_pre_FCR_ASL_5979G>A.svg', width = 1.1, height = 1.1)
+ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_pre_FCR_ASL_5979G>A.svg', width = 1.1, height = 1.1)
 
 ggplot() + 
   geom_point(data=vafs[cells.2.recipient,], aes(x=`ASL:chr7:65554306:A/G`, y=`5979G>A`/10), color='firebrick', size=0.5) + 
@@ -302,7 +300,7 @@ ggplot() +
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
-ggsave('./figures/CLL3/plots/20230427_CLL3_post_HSCT_ASL_5979G>A.svg', width = 1.1, height = 1.1)
+ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_post_HSCT_ASL_5979G>A.svg', width = 1.1, height = 1.1)
 
 
 
@@ -314,7 +312,7 @@ ggplot() +
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
-ggsave('./figures/CLL3/plots/20230427_CLL3_pre_FCR_ASL_KCNK13.svg', width = 1.1, height = 1.1)
+ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_pre_FCR_ASL_KCNK13.svg', width = 1.1, height = 1.1)
 
 ggplot() + 
   geom_point(data=vafs[cells.2.recipient,], aes(x=`ASL:chr7:65554306:A/G`, y=`KCNK13:chr14:90650709:G/A`), color='firebrick', size=0.5) + 
@@ -323,7 +321,7 @@ ggplot() +
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
-ggsave('./figures/CLL3/plots/20230427_CLL3_post_HSCT_ASL_KCNK13.svg', width = 1.1, height = 1.1)
+ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_post_HSCT_ASL_KCNK13.svg', width = 1.1, height = 1.1)
 
 ggplot() + 
   geom_point(data=vafs[cells.1.CLL,], aes(x=`ASL:chr7:65554306:A/G`, y=`MME:chr3:154866416:G/T`), color='blue', size=0.5) + 
@@ -332,7 +330,7 @@ ggplot() +
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
-ggsave('./figures/CLL3/plots/20230427_CLL3_pre_FCR_ASL_MME.svg', width = 1.1, height = 1.1)
+ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_pre_FCR_ASL_MME.svg', width = 1.1, height = 1.1)
 
 ggplot() + 
   geom_point(data=vafs[cells.2.recipient,], aes(x=`ASL:chr7:65554306:A/G`, y=`MME:chr3:154866416:G/T`), color='firebrick', size=0.5) + 
@@ -341,4 +339,4 @@ ggplot() +
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
-ggsave('./figures/CLL3/plots/20230427_CLL3_post_HSCT_ASL_MME.svg', width = 1.1, height = 1.1)
+ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_post_HSCT_ASL_MME.svg', width = 1.1, height = 1.1)
