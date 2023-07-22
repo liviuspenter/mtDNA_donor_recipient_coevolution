@@ -190,8 +190,8 @@ dev.off()
 
 ggplot() + 
   geom_point(data=vafs[cells.1.CLL,], aes(x=`MME:chr3:154866416:G/T`, y=`KCNK13:chr14:90650709:G/A`), color='blue', size=0.5) + 
-  scale_x_continuous('% MMEK525N') + 
-  scale_y_continuous('% KCKN13V197I') + 
+  scale_x_continuous('% MMEK525N', limits = c(0,100)) + 
+  scale_y_continuous('% KCKN13V197I', limits = c(0,100)) + 
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
@@ -199,8 +199,8 @@ ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_pre_FCR_MME_KC
 
 ggplot() + 
   geom_point(data=vafs[cells.2.recipient,], aes(x=`MME:chr3:154866416:G/T`, y=`KCNK13:chr14:90650709:G/A`), color='firebrick', size=0.5) + 
-  scale_x_continuous('% MMEK525N') + 
-  scale_y_continuous('% KCKN13V197I') + 
+  scale_x_continuous('% MMEK525N', limits = c(0,100)) + 
+  scale_y_continuous('% KCKN13V197I', limits = c(0,100)) + 
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
@@ -209,8 +209,8 @@ ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_post_HSCT_MME_
 
 ggplot() + 
   geom_point(data=vafs[cells.1.CLL,], aes(x=`2332C>T`/10, y=`5979G>A`/10), color='blue', size=0.5) + 
-  scale_x_continuous('% 2332C>T') + 
-  scale_y_continuous('% 5979G>A') + 
+  scale_x_continuous('% 2332C>T', limits = c(0,100)) + 
+  scale_y_continuous('% 5979G>A', limits = c(0,100)) + 
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
@@ -218,8 +218,8 @@ ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_pre_FCR_2332C>
 
 ggplot() + 
   geom_point(data=vafs[cells.2.recipient,], aes(x=`2332C>T`/10, y=`5979G>A`/10), color='firebrick', size=0.5) + 
-  scale_x_continuous('% 2332C>T') + 
-  scale_y_continuous('% 5979G>A') + 
+  scale_x_continuous('% 2332C>T', limits = c(0,100)) + 
+  scale_y_continuous('% 5979G>A', limits = c(0,100)) + 
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
@@ -229,8 +229,8 @@ ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_post_HSCT_2332
 
 ggplot() + 
   geom_point(data=vafs[cells.1.CLL,], aes(x=`MME:chr3:154866416:G/T`, y=`5979G>A`/10), color='blue', size=0.5) + 
-  scale_x_continuous('% MMEK525N') + 
-  scale_y_continuous('% 5979G>A') + 
+  scale_x_continuous('% MMEK525N', limits = c(0,100)) + 
+  scale_y_continuous('% 5979G>A', limits = c(0,100)) + 
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
@@ -238,8 +238,8 @@ ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_pre_FCR_MME_59
 
 ggplot() + 
   geom_point(data=vafs[cells.2.recipient,], aes(x=`MME:chr3:154866416:G/T`, y=`5979G>A`/10), color='firebrick', size=0.5) + 
-  scale_x_continuous('% MMEK525N') + 
-  scale_y_continuous('% 5979G>A') + 
+  scale_x_continuous('% MMEK525N', limits = c(0,100)) + 
+  scale_y_continuous('% 5979G>A', limits = c(0,100)) + 
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
@@ -248,8 +248,8 @@ ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_post_HSCT_MME_
 
 ggplot() + 
   geom_point(data=vafs[cells.1.CLL,], aes(x=`MME:chr3:154866416:G/T`, y=`2332C>T`/10), color='blue', size=0.5) + 
-  scale_x_continuous('% MMEK525N') + 
-  scale_y_continuous('% 2332C>T') + 
+  scale_x_continuous('% MMEK525N', limits = c(0,100)) + 
+  scale_y_continuous('% 2332C>T', limits = c(0,100)) + 
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
@@ -257,8 +257,8 @@ ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_pre_FCR_MME_23
 
 ggplot() + 
   geom_point(data=vafs[cells.2.recipient,], aes(x=`MME:chr3:154866416:G/T`, y=`2332C>T`/10), color='firebrick', size=0.5) + 
-  scale_x_continuous('% MMEK525N') + 
-  scale_y_continuous('% 2332C>T') + 
+  scale_x_continuous('% MMEK525N', limits = c(0,100)) + 
+  scale_y_continuous('% 2332C>T', limits = c(0,100)) + 
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
@@ -268,8 +268,8 @@ ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_post_HSCT_MME_
 
 ggplot() + 
   geom_point(data=vafs[cells.1.CLL,], aes(x=`ASL:chr7:65554306:A/G`, y=`2332C>T`/10), color='blue', size=0.5) + 
-  scale_x_continuous('% ASLY321C') + 
-  scale_y_continuous('% 2332C>T') + 
+  scale_x_continuous('% ASLY321C', limits = c(0,100)) + 
+  scale_y_continuous('% 2332C>T', limits = c(0,100)) + 
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
@@ -277,8 +277,8 @@ ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_pre_FCR_ASL_23
 
 ggplot() + 
   geom_point(data=vafs[cells.2.recipient,], aes(x=`ASL:chr7:65554306:A/G`, y=`2332C>T`/10), color='firebrick', size=0.5) + 
-  scale_x_continuous('% ASLY321C') + 
-  scale_y_continuous('% 2332C>T') + 
+  scale_x_continuous('% ASLY321C', limits = c(0,100)) + 
+  scale_y_continuous('% 2332C>T', limits = c(0,100)) + 
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
@@ -286,8 +286,8 @@ ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_post_HSCT_ASL_
 
 ggplot() + 
   geom_point(data=vafs[cells.1.CLL,], aes(x=`ASL:chr7:65554306:A/G`, y=`5979G>A`/10), color='blue', size=0.5) + 
-  scale_x_continuous('% ASLY321C') + 
-  scale_y_continuous('% 5979G>A') + 
+  scale_x_continuous('% ASLY321C', limits = c(0,100)) + 
+  scale_y_continuous('% 5979G>A', limits = c(0,100)) + 
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
@@ -295,8 +295,8 @@ ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_pre_FCR_ASL_59
 
 ggplot() + 
   geom_point(data=vafs[cells.2.recipient,], aes(x=`ASL:chr7:65554306:A/G`, y=`5979G>A`/10), color='firebrick', size=0.5) + 
-  scale_x_continuous('% ASLY321C') + 
-  scale_y_continuous('% 5979G>A') + 
+  scale_x_continuous('% ASLY321C', limits = c(0,100)) + 
+  scale_y_continuous('% 5979G>A', limits = c(0,100)) + 
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
@@ -307,8 +307,8 @@ ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_post_HSCT_ASL_
 
 ggplot() + 
   geom_point(data=vafs[cells.1.CLL,], aes(x=`ASL:chr7:65554306:A/G`, y=`KCNK13:chr14:90650709:G/A`), color='blue', size=0.5) + 
-  scale_x_continuous('% ASLY321C') + 
-  scale_y_continuous('% KCKN13V197I') + 
+  scale_x_continuous('% ASLY321C', limits = c(0,100)) + 
+  scale_y_continuous('% KCKN13V197I', limits = c(0,100)) + 
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
@@ -316,8 +316,8 @@ ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_pre_FCR_ASL_KC
 
 ggplot() + 
   geom_point(data=vafs[cells.2.recipient,], aes(x=`ASL:chr7:65554306:A/G`, y=`KCNK13:chr14:90650709:G/A`), color='firebrick', size=0.5) + 
-  scale_x_continuous('% ASLY321C') + 
-  scale_y_continuous('% KCKN13V197I') + 
+  scale_x_continuous('% ASLY321C', limits = c(0,100)) + 
+  scale_y_continuous('% KCKN13V197I', limits = c(0,100)) + 
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
@@ -325,8 +325,8 @@ ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_post_HSCT_ASL_
 
 ggplot() + 
   geom_point(data=vafs[cells.1.CLL,], aes(x=`ASL:chr7:65554306:A/G`, y=`MME:chr3:154866416:G/T`), color='blue', size=0.5) + 
-  scale_x_continuous('% ASLY321C') + 
-  scale_y_continuous('% MMEK525N') + 
+  scale_x_continuous('% ASLY321C', limits = c(0,100)) + 
+  scale_y_continuous('% MMEK525N', limits = c(0,100)) + 
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
@@ -334,8 +334,8 @@ ggsave('./figure_coevolution/CLL/figures/CLL5/plots/20230427_CLL5_pre_FCR_ASL_MM
 
 ggplot() + 
   geom_point(data=vafs[cells.2.recipient,], aes(x=`ASL:chr7:65554306:A/G`, y=`MME:chr3:154866416:G/T`), color='firebrick', size=0.5) + 
-  scale_x_continuous('% ASLY321C') + 
-  scale_y_continuous('% MMEK525N') + 
+  scale_x_continuous('% ASLY321C', limits = c(0,100)) + 
+  scale_y_continuous('% MMEK525N', limits = c(0,100)) + 
   theme_classic() + 
   theme(axis.text = element_text('Arial', size=8, color='black'),
         axis.title = element_text('Arial', size=8, color='black'))
