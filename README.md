@@ -11,13 +11,13 @@ The data needed to reproduce the analyses will be hosted on [OSF](https://osf.io
 The code for the panels of the main figures can be found here. See individual subdirectories for further indications. 
 
 ```
-Figure 1 | xxx
-Figure 2 | xxx
-Figure 3 | xxx
-Figure 4 | xxx
-Figure 5 | xxx
-Figure 6 | xxx
-Figure 7 | xxx
+Figure 1 | figure_CLL_WES_RNA
+Figure 2 | figure_CLL_WES_RNA, figure_coevolution
+Figure 3 | figure_mixing
+Figure 4 | figure_IST
+Figure 5 | figure_10026
+Figure 6 | figure_AML_coevolution
+Figure 7 | figure_AML_coevolution
 ```
 
 ## Supplementary figures
@@ -25,24 +25,24 @@ Figure 7 | xxx
 The code for the panels of the supplementary figures can be found here. See individual subdirectories for further indications. 
 
 ```
-Suppl. Fig. 1 | xxx
-Suppl. Fig. 2 | xxx
-Suppl. Fig. 3 | xxx
-Suppl. Fig. 4 | xxx
-Suppl. Fig. 5 | xxx
-Suppl. Fig. 6 | xxx
-Suppl. Fig. 7 | xxx
-Suppl. Fig. 8 | xxx
-Suppl. Fig. 9 | xxx
-Suppl. Fig. 10 | xxx
-Suppl. Fig. 11 | xxx
-Suppl. Fig. 12 | xxx
-Suppl. Fig. 13 | xxx
-Suppl. Fig. 14 | xxx
-Suppl. Fig. 15 | xxx
-Suppl. Fig. 16 | xxx
-Suppl. Fig. 17 | xxx
-Suppl. Fig. 18 | xxx
-Suppl. Fig. 19 | xxx
-Suppl. Fig. 20 | xxx
+Suppl. Fig. 1 | figure_CLL_WES_RNA
+Suppl. Fig. 2 | figure_CLL_WES_RNA
+Suppl. Fig. 3 | figure_CLL_WES_RNA
+Suppl. Fig. 4 | figure_CLL_WES_RNA
+Suppl. Fig. 5 | figure_CLL_WES_RNA
+Suppl. Fig. 6 | figure_CLL_WES_RNA
+Suppl. Fig. 7 | figure_coevolution
+Suppl. Fig. 8 | figure_coevolution
+Suppl. Fig. 9 | figure_coevolution
+Suppl. Fig. 10 | figure_mixing
+Suppl. Fig. 11 | figure_mixing
+Suppl. Fig. 12 | figure_mixing
+Suppl. Fig. 13 | figure_IST
+Suppl. Fig. 14 | figure_IST
+Suppl. Fig. 15 | figure_IST
+Suppl. Fig. 16 | figure_10026
+Suppl. Fig. 17 | figure_10026
+Suppl. Fig. 18 | figure_AML_coevolution
+Suppl. Fig. 19 | figure_AML_coevolution
+Suppl. Fig. 20 | figure_AML_coevolution
 ```
