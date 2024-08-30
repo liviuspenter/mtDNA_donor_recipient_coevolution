@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='86.40pt' height='180.00pt' viewBox='0 0 86.40 180.00'>
+<defs>
+  <style type='text/css'><![CDATA[
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  ]]></style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
+<defs>
+  <clipPath id='cpMC4wMHw4Ni40MHwwLjAwfDE4MC4wMA=='>
+    <rect x='0.00' y='0.00' width='86.40' height='180.00' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMC4wMHw4Ni40MHwwLjAwfDE4MC4wMA==)'>
+<rect x='0.00' y='0.00' width='86.40' height='180.00' style='stroke-width: 1.07; stroke: #FFFFFF; fill: #FFFFFF;' />
+</g>
+<defs>
+  <clipPath id='cpMzkuMTF8ODAuOTJ8NS40OHwxMjQuNTM='>
+    <rect x='39.11' y='5.48' width='41.81' height='119.05' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMzkuMTF8ODAuOTJ8NS40OHwxMjQuNTM=)'>
+<rect x='39.11' y='5.48' width='41.81' height='119.05' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+<circle cx='50.52' cy='11.87' r='0.89' style='stroke-width: 0.71; fill: #000000;' />
+<circle cx='69.52' cy='13.71' r='0.89' style='stroke-width: 0.71; fill: #000000;' />
+<polyline points='50.52,11.87 69.52,13.71 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='45.76,11.15 55.27,11.15 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='50.52,11.15 50.52,13.98 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='45.76,13.98 55.27,13.98 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='64.77,11.93 74.27,11.93 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='69.52,11.93 69.52,17.71 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='64.77,17.71 74.27,17.71 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+</g>
+<g clip-path='url(#cpMC4wMHw4Ni40MHwwLjAwfDE4MC4wMA==)'>
+<polyline points='39.11,124.53 39.11,5.48 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<text x='34.18' y='122.70' text-anchor='end' style='font-size: 10.00px; font-family: "Arial";' textLength='5.57px' lengthAdjust='spacingAndGlyphs'>0</text>
+<text x='34.18' y='95.64' text-anchor='end' style='font-size: 10.00px; font-family: "Arial";' textLength='11.13px' lengthAdjust='spacingAndGlyphs'>25</text>
+<text x='34.18' y='68.59' text-anchor='end' style='font-size: 10.00px; font-family: "Arial";' textLength='11.13px' lengthAdjust='spacingAndGlyphs'>50</text>
+<text x='34.18' y='41.53' text-anchor='end' style='font-size: 10.00px; font-family: "Arial";' textLength='11.13px' lengthAdjust='spacingAndGlyphs'>75</text>
+<text x='34.18' y='14.47' text-anchor='end' style='font-size: 10.00px; font-family: "Arial";' textLength='16.70px' lengthAdjust='spacingAndGlyphs'>100</text>
+<polyline points='36.37,119.12 39.11,119.12 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='36.37,92.06 39.11,92.06 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='36.37,65.01 39.11,65.01 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='36.37,37.95 39.11,37.95 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='36.37,10.89 39.11,10.89 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='39.11,124.53 80.92,124.53 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='50.52,127.27 50.52,124.53 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<polyline points='69.52,127.27 69.52,124.53 ' style='stroke-width: 1.07; stroke: #333333; stroke-linecap: butt;' />
+<text transform='translate(54.10,129.46) rotate(-90)' text-anchor='end' style='font-size: 10.00px; font-family: "Arial";' textLength='45.06px' lengthAdjust='spacingAndGlyphs'>Screening</text>
+<text transform='translate(73.10,129.46) rotate(-90)' text-anchor='end' style='font-size: 10.00px; font-family: "Arial";' textLength='12.79px' lengthAdjust='spacingAndGlyphs'>C2</text>
+<text transform='translate(12.64,65.01) rotate(-90)' text-anchor='middle' style='font-size: 10.00px; font-family: "Arial";' textLength='111.95px' lengthAdjust='spacingAndGlyphs'>% donor T cell chimerism</text>
+</g>
+</svg>
