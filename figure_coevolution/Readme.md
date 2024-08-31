@@ -1,6 +1,6 @@
-## Co-evolution of mitochondrial and somatic nuclear DNA mutations in CLL before and after chemoimmunotherapy followed by stem cell transplantation.
+# Figure 2 - Co-evolution of mitochondrial and somatic nuclear DNA mutations in CLL at single cell resolution.
 
-Panels C-F: [CLL/](CLL)
+Panels E-H: [CLL/](CLL)
 
 Supplementary Figures CLL: [CLL/](CLL)
 
