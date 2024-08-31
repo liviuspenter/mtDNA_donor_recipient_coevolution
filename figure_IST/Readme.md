@@ -1,4 +1,4 @@
-# Tracking of AML cells and their phenotype in bone marrow and peripheral blood of post-HSCT incipient AML relapse responsive to immunosuppression tapering (IST).
+# Tracking of AML in post-HSCT AML relapse responsive to immunosuppression tapering (IST).
 
 The sample names and the patient IDs can be identified using this table:
 
