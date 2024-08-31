@@ -1,4 +1,4 @@
-## Applicability and sensitivity of donor-recipient deconvolution using mitochondrial DNA mutations.
+##Figure 3 - Applicability and sensitivity of donor-recipient deconvolution using mitochondrial DNA mutations.
 
 Panels A-B: [bulk/](bulk)
 
