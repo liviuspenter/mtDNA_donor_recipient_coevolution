@@ -4,7 +4,9 @@ Code to reproduce analyses of Penter et al., 2024.
 
 ## intermediate files 
 
-The data needed to reproduce the analyses will be hosted on [OSF](https://osf.io/). They need to be downloaded and used to populate the data/ folder. 
+The data needed to reproduce the analyses is hosted on [OSF](https://osf.io/). They need to be downloaded and used to populate the data/ folder. 
+
+[Part1](https://osf.io/brd5u/), [Part2](https://osf.io/7584h/), [Part3](https://osf.io/ngyu4/), [Part4](https://osf.io/zh4tb/), [Part5](https://osf.io/5f9dq/), [Part6](https://osf.io/ghe92/)
 
 ## Main figures
 
