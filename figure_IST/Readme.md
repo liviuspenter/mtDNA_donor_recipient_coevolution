@@ -1,4 +1,4 @@
-# Tracking of AML in post-HSCT AML relapse responsive to immunosuppression tapering (IST).
+# Figure 4 - Tracking of AML in post-HSCT AML relapse responsive to immunosuppression tapering (IST).
 
 The sample names and the patient IDs can be identified using this table:
 
