@@ -1,6 +1,6 @@
 # Tracking rare single donor and recipient immune and leukemia cells after allogeneic hematopoietic cell transplantation using mitochondrial DNA mutations
 
-Code to reproduce analyses of Penter et al., 2024.
+Code to reproduce analyses of [Penter et al., Blood Cancer Discovery 2024](https://doi.org/10.1158/2643-3230.BCD-23-0138).
 
 ## intermediate files 
 
