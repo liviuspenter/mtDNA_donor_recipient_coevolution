@@ -2,7 +2,7 @@
 
 Code to reproduce analyses of [Penter et al., Blood Cancer Discovery 2024](https://doi.org/10.1158/2643-3230.BCD-23-0138).
 
-![Article Opener](cover.jpg "Tracking the dark and bright side of hematopoiesis with mtDNA mutations").
+[![Article Opener](cover.jpg "Tracking the dark and bright side of hematopoiesis with mtDNA mutations")](https://doi.org/10.1158/2643-3230.BCD-23-0138)
 
 ## intermediate files 
 
